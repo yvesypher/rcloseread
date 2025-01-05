@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R</title>
+<title>R You Curious About R? Here’s Everything You Need to Know!</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -36,8 +70,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="rcloseread_files/libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
 <script src="rcloseread_files/libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
 <script src="rcloseread_files/libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
+<script type="module" src="rcloseread_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="rcloseread_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <meta cr-debug-mode="false">
-<meta cr-remove-header-space="false">
+<meta cr-remove-header-space="true">
 
 
 <link rel="stylesheet" href="_extensions/qmd-lab/closeread/closeread.css">
@@ -48,10 +84,20 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
 
 <main class="content column-page" id="quarto-document-content">
+      <!-- user-provided yaml closeread style options -->
+      <style>
+        :root {
+          --cr-narrative-background-color-sidebar: #86bff3;
+--cr-narrative-text-color-overlay: black;
+--cr-section-background-color: transparent;
+--cr-narrative-background-color-overlay: transparent;
+        }
+      </style>
+    
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">R</h1>
+<h1 class="title">R You Curious About R? Here’s Everything You Need to Know!</h1>
 </div>
 
 
@@ -68,10 +114,382 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<style>
+ #cr-img {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    flex-wrap: wrap;        
+    text-align: center;
+  }
+</style>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="27" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 26;"><span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>world <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"countries-110m.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>countries <span class="op">=</span> topojson<span class="op">.</span><span class="fu">feature</span>(world<span class="op">,</span> world<span class="op">.</span><span class="at">objects</span><span class="op">.</span><span class="at">countries</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>((<span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"rusers_rank2015.csv"</span>)<span class="op">.</span><span class="fu">csv</span>())<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">id</span><span class="op">,</span> <span class="op">+</span>d<span class="op">.</span><span class="at">score</span>]))</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>rank <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>((<span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"rusers_rank2015.csv"</span>)<span class="op">.</span><span class="fu">csv</span>())<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">id</span><span class="op">,</span> <span class="op">+</span>d<span class="op">.</span><span class="at">rank</span>]))</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>city <span class="op">=</span> [{ <span class="dt">name</span><span class="op">:</span> <span class="st">"Auckland"</span><span class="op">,</span>  <span class="dt">lat</span><span class="op">:</span> <span class="op">-</span><span class="fl">36.848461</span><span class="op">,</span> <span class="dt">lon</span><span class="op">:</span> <span class="fl">174.763336</span> }]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
 
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="41" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 40;"><span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>angleScale2 <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">6</span>])</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">180</span><span class="op">,</span> <span class="dv">180</span>])</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">clamp</span>(<span class="kw">true</span>)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>angle2 <span class="op">=</span> <span class="fu">angleScale2</span>(</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  (crTriggerIndex <span class="op">!=</span> <span class="kw">null</span> <span class="op">?</span> crTriggerIndex <span class="op">:</span> <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> crTriggerProgress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cr-section cr-column-screen sidebar-left">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-Rlogo">
+<section id="you-curious-about-heres-everything-you-need-to-know" class="level1 narrative">
+<h1><img src="img/Rlogo.ico" class="img-fluid"> You Curious About <img src="img/Rlogo.ico" class="img-fluid">? Here’s Everything You <br> Need To Know!</h1>
+</section>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-Rlogo">
+<div class="narrative">
+<p>If you are seeking a programming language that combines powerful statistical analysis, elegant data visualization, and flexibility, R is a good choice for you.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-Rlogo">
+<div class="narrative">
+<p>But have you ever wondered how R becomes the go-to tool for data scientists and statisticians worldwide?</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-Rlogo">
+<div class="narrative">
+<p>Hence, let’s explore the journey of R from a niche tool to a global phenomenon. Whether you’re a beginner or just curious about its story, this has everything you need to know to get started with R.</p>
+</div>
+</div>
+<div class="progress-block">
+<div class="trigger new-trigger" data-focus-on="cr-globe">
+<div class="narrative">
+<p>R has become one of the most widely used programming languages across the globe, thanks to its power in data analysis, visualization, and statistical computing. The number of R users has grown exponentially, solidifying its position in academia, research, and industry.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-globe">
+<div class="narrative">
+<p>This map shows the R popularity score of worldwide, which is the scale average of the number of R conference attendees, R Foundation and RUG members, R-bloggers.com visits and CRAN downloads per 1,000 people using data up to 2015. R users are primarily located in countries across Europe, Oceania, and North America.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="0%,-130%" data-focus-on="cr-globe" data-scale-by="4.75">
+<div class="narrative">
+<p>What many may not know is that R originates from <br> <strong>New Zealand</strong>.</p>
+</div>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-img">
+<div class="narrative">
+<p>R was created by two professors, <strong>Ross Ihaka</strong> and <strong>Robert Gentleman</strong>, from the University of Auckland in the early 1990s.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-img" data-highlight="cr-initial,cr-initial1">
+<div class="narrative">
+<p>Inspired by S programming language, this pioneering duo developed a language to teach introductory statistics at the University of Auckland and named it after the <strong>initial</strong> of their first names.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-img">
+<div class="narrative">
+<p>Their vision of a free and open-source platform for statistical computing has since empowered countless data enthusiasts and professionals worldwide, creating a vibrant community that continues to innovate and expand the boundaries of R.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-imgpkg">
+<div class="narrative">
+<p>One of the key drivers behind this innovation is R’s package ecosystem. But what exactly is an R package? Think of it as an extension or add-on for R, created by the community to solve specific problems or enhance functionality. Each package bundles together reusable functions, data, and documentation, making it easier for users to tackle tasks without reinventing the wheel.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-imgpkg">
+<div class="narrative">
+<p>With over 18,000 packages available on <strong>CRAN</strong> (the Comprehensive R Archive Network), R’s functionality is virtually limitless. Let’s explore a few game-changing packages.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-tdv">
+<div class="narrative">
+<p><code>tidyverse</code> is one of the most popular R packages, which is a collection of R packages designed for data science, including: <code>ggplot2</code>, <code>readr</code>, <code>tidyr</code>, <code>purrr</code>, <code>dplyr</code>, <code>stringr</code>, <code>tibble</code>. All packages follow a consistent design philosophy, grammar, and data structures.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-tb">
+<div class="narrative">
+<p><code>tibble</code> is a modern take on R’s classic data frame. Tibbles keep what works and fix what doesn’t. For example, tibbles don’t automatically change variable names or data types, and they flag potential issues early. This helps you write cleaner, more reliable code. Additionally, tibbles come with an improved print function, making it easier to work with large datasets or complex objects.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-gg">
+<div class="narrative">
+<p><code>ggplot2</code> is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-rr">
+<div class="narrative">
+<p><code>readr</code> is designed to make importing data into R fast and hassle-free. It works great with delimited files such as comma-separated values (CSV) and tab-separated values (TSV) and provides helpful feedback if something goes wrong. Whether you’re working with messy data or clean tables, readr simplifies the process.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-tr">
+<div class="narrative">
+<p><code>tidyr</code> package helps organize data into a “tidy” format, where: <br> - Each variable is a column; each column is a variable. <br> - Each observation is a row; each row is an observation. <br> - Each value is a cell; each cell is a single value. <br> Tidy data makes the analysis easier, more intuitive, and compatible with the rest of the <code>tidyverse</code> tools.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-pr">
+<div class="narrative">
+<p><code>purrr</code> expands R’s functional programming (FP) toolkit by offering a complete and consistent set of tools for working with functions and vectors. It’s great for working with functions and vectors. One of its standout features is the <code>map()</code> family of functions, which can replace repetitive for-loops with simpler, more readable code.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-fs">
+<div class="narrative">
+<p><code>forcats</code> is a powerful tool for managing and manipulating factors, R’s way of handling categorical data. It simplifies tasks like reordering, renaming, and reorganizing factor levels, making it easier to analyze or present categorical variables effectively. Whether it’s cleaning messy data or fine-tuning visualizations, <code>forcats</code> simplifies the process of handling categories with ease and precision.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-dr">
+<div class="narrative">
+<p><code>dplyr</code> is a toolkit for data manipulation, providing a consistent set of functions that help handle common data wrangling tasks. Its clean syntax ensures the readability and efficiency of the codes.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-sr">
+<div class="narrative">
+<p><code>stringr</code> streamlines working with text data in R, providing a consistent set of functions for tasks such as searching, replacing, and splitting strings. When dealing with messy text data, stringr efficiently reduces effort and saves time.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-rstudio">
+<div class="narrative">
+<p>As an interpreted language, R operates through a native command-line interface (CLI), offering users direct access to its powerful capabilities for data analysis and statistical computing. While the CLI is effective for experienced users, it can be challenging for beginners or those working on more complex projects. This is where RStudio, an integrated development environment (IDE) for R, comes in. RStudio enhances the R experience by providing a user-friendly interface with a suite of tools that streamline the workflow for data analysis.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-wf">
+<div class="narrative">
+<p>One of its standout features is its robust support for R Markdown, which allows users to create dynamic, reproducible analyses and share results in a variety of formats, such as HTML, PDF, and Word. RStudio’s integration of these tools enhance the ability to organize, visualize, and analyse data, which promotes reproducibility and transparency in research and professional data work.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-rgrp">
+<div class="narrative">
+<p>But R is more than just a language or a tool, it’s a community. R enthusiasts connect through global groups, conferences, and meetups such as <strong>R-Ladies</strong>, <strong>posit::conf</strong>, and <strong>useR!</strong>.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-rgrp">
+<div class="narrative">
+<p>This collaborative spirit has fostered a culture of knowledge sharing and mutual support, driving R’s continuous evolution.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-Rlogo">
+<div class="narrative">
+<p>Are you ready to explore the power and versatility of R? Dive in today and join a community that’s shaping the future of data analysis and visualization.</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-Rlogo" class="sticky">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/R_logo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+<div id="cr-globe" class="sticky">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="80" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 79;"><span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>  <span class="dt">projection</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="st">"orthographic"</span><span class="op">,</span> <span class="dt">rotate</span><span class="op">:</span> [angle2<span class="op">,</span> <span class="op">-</span><span class="dv">10</span>] }<span class="op">,</span></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>    <span class="dt">type</span><span class="op">:</span> <span class="st">"quantize"</span><span class="op">,</span></span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>    <span class="dt">scheme</span><span class="op">:</span> <span class="st">"blues"</span><span class="op">,</span></span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Popularity Score"</span><span class="op">,</span></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>    <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">geo</span>(countries<span class="op">,</span> {</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> score<span class="op">.</span><span class="fu">get</span>(d<span class="op">.</span><span class="at">id</span>)<span class="op">,</span></span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>      <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>      <span class="dt">channels</span><span class="op">:</span> {</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Country</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Rank</span><span class="op">:</span> d <span class="kw">=&gt;</span> rank<span class="op">.</span><span class="fu">get</span>(d<span class="op">.</span><span class="at">id</span>)</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">sphere</span>()<span class="op">,</span></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>     Plot<span class="op">.</span><span class="fu">dot</span>(city<span class="op">,</span> {</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"lon"</span><span class="op">,</span></span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"lat"</span><span class="op">,</span></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"red"</span><span class="op">,</span></span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>      <span class="dt">paintOrder</span><span class="op">:</span> <span class="st">"stroke"</span><span class="op">,</span></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>      <span class="dt">r</span><span class="op">:</span> <span class="fl">0.75</span></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>(city<span class="op">,</span> {</span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">lon</span> <span class="op">+</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">lat</span> <span class="op">+</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"name"</span><span class="op">,</span></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"#1A2954"</span><span class="op">,</span></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>      <span class="dt">paintOrder</span><span class="op">:</span> <span class="st">"stroke"</span><span class="op">,</span></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>      <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span></span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div id="cr-globe" class="sticky">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="123" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 122;"><span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>  <span class="dt">projection</span><span class="op">:</span> { <span class="dt">type</span><span class="op">:</span> <span class="st">"orthographic"</span><span class="op">,</span> <span class="dt">rotate</span><span class="op">:</span> [angle2<span class="op">,</span> <span class="op">-</span><span class="dv">10</span>] }<span class="op">,</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {</span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a>    <span class="dt">type</span><span class="op">:</span> <span class="st">"quantize"</span><span class="op">,</span></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>    <span class="dt">scheme</span><span class="op">:</span> <span class="st">"blues"</span><span class="op">,</span></span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Popularity Score"</span><span class="op">,</span></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a>    <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">geo</span>(countries<span class="op">,</span> {</span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> d <span class="kw">=&gt;</span> score<span class="op">.</span><span class="fu">get</span>(d<span class="op">.</span><span class="at">id</span>)<span class="op">,</span></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>      <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>      <span class="dt">channels</span><span class="op">:</span> {</span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Country</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">name</span><span class="op">,</span></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Rank</span><span class="op">:</span> d <span class="kw">=&gt;</span> rank<span class="op">.</span><span class="fu">get</span>(d<span class="op">.</span><span class="at">id</span>)</span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">sphere</span>()</span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div id="cr-img" class="sticky">
+<div class="columns">
+<div class="column" style="width:&quot;50%;">
+<p><img src="img/ross.png" class="img-fluid"></p>
+<div class="line-block"><span id="lb1-1"><span id="cr-initial">R</span>oss Ihaka</span></div>
+</div><div class="column" style="width:&quot;50%;">
+<p><img src="img/robert.png" class="img-fluid"></p>
+<div class="line-block"><span id="lb2-1"><span id="cr-initial1">R</span>obert Gentleman</span></div>
+</div>
+</div>
+</div>
+<div id="cr-imgpkg" class="sticky">
+<p><img src="img/rpackage.png" class="img-fluid"></p>
+</div>
+<div id="cr-tdv" class="sticky">
+<p><img src="img/tidyverse.png" class="img-fluid"></p>
+</div>
+<div id="cr-gg" class="sticky">
+<p><img src="img/ggplot2.png" class="img-fluid"></p>
+</div>
+<div id="cr-rr" class="sticky">
+<p><img src="img/readr.png" class="img-fluid"></p>
+</div>
+<div id="cr-tr" class="sticky">
+<p><img src="img/tidyr.png" class="img-fluid"></p>
+</div>
+<div id="cr-pr" class="sticky">
+<p><img src="img/purrr.png" class="img-fluid"></p>
+</div>
+<div id="cr-dr" class="sticky">
+<p><img src="img/dplyr.png" class="img-fluid"></p>
+</div>
+<div id="cr-sr" class="sticky">
+<p><img src="img/stringr.png" class="img-fluid"></p>
+</div>
+<div id="cr-tb" class="sticky">
+<p><img src="img/tibble.png" class="img-fluid"></p>
+</div>
+<div id="cr-fs" class="sticky">
+<p><img src="img/forcats.png" class="img-fluid"></p>
+</div>
+<div id="cr-rstudio" class="sticky">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/rstudio.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+<div id="cr-wf" class="sticky">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/workflow.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+<div id="cr-rgrp" class="sticky">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/rgrp.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 </main>
 <!-- /main column -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG53b3JsZCA9IEZpbGVBdHRhY2htZW50KFwiY291bnRyaWVzLTExMG0uanNvblwiKS5qc29uKClcclxuXHJcbmNvdW50cmllcyA9IHRvcG9qc29uLmZlYXR1cmUod29ybGQsIHdvcmxkLm9iamVjdHMuY291bnRyaWVzKVxyXG5cclxuc2NvcmUgPSBuZXcgTWFwKChhd2FpdCBGaWxlQXR0YWNobWVudChcInJ1c2Vyc19yYW5rMjAxNS5jc3ZcIikuY3N2KCkpLm1hcChkID0+IFtkLmlkLCArZC5zY29yZV0pKVxyXG5cclxucmFuayA9IG5ldyBNYXAoKGF3YWl0IEZpbGVBdHRhY2htZW50KFwicnVzZXJzX3JhbmsyMDE1LmNzdlwiKS5jc3YoKSkubWFwKGQgPT4gW2QuaWQsICtkLnJhbmtdKSlcclxuXHJcbmNpdHkgPSBbeyBuYW1lOiBcIkF1Y2tsYW5kXCIsICBsYXQ6IC0zNi44NDg0NjEsIGxvbjogMTc0Ljc2MzMzNiB9XVxyXG5cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiYW5nbGVTY2FsZTIgPSBkMy5zY2FsZUxpbmVhcigpXHJcbiAgLmRvbWFpbihbMCwgNl0pXHJcbiAgLnJhbmdlKFstMTgwLCAxODBdKVxyXG4gIC5jbGFtcCh0cnVlKVxyXG5cclxuYW5nbGUyID0gYW5nbGVTY2FsZTIoXHJcbiAgKGNyVHJpZ2dlckluZGV4ICE9IG51bGwgPyBjclRyaWdnZXJJbmRleCA6IC0xKVxyXG4gICAgKyBjclRyaWdnZXJQcm9ncmVzcylcclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiUGxvdC5wbG90KHtcclxuICBwcm9qZWN0aW9uOiB7IHR5cGU6IFwib3J0aG9ncmFwaGljXCIsIHJvdGF0ZTogW2FuZ2xlMiwgLTEwXSB9LFxyXG4gIGNvbG9yOiB7XHJcbiAgICB0eXBlOiBcInF1YW50aXplXCIsXHJcbiAgICBzY2hlbWU6IFwiYmx1ZXNcIixcclxuICAgIGxhYmVsOiBcIlBvcHVsYXJpdHkgU2NvcmVcIixcclxuICAgIGxlZ2VuZDogdHJ1ZVxyXG4gIH0sXHJcbiAgbWFya3M6IFtcclxuICAgIFBsb3QuZ2VvKGNvdW50cmllcywge1xyXG4gICAgICBmaWxsOiBkID0+IHNjb3JlLmdldChkLmlkKSxcclxuICAgICAgdGlwOiB0cnVlLFxyXG4gICAgICBjaGFubmVsczoge1xyXG4gICAgICAgIENvdW50cnk6IGQgPT4gZC5wcm9wZXJ0aWVzLm5hbWUsXHJcbiAgICAgICAgUmFuazogZCA9PiByYW5rLmdldChkLmlkKVxyXG4gICAgICB9XHJcbiAgICB9KSxcclxuICAgIFBsb3Quc3BoZXJlKCksXHJcbiAgICAgUGxvdC5kb3QoY2l0eSwge1xyXG4gICAgICB4OiBcImxvblwiLFxyXG4gICAgICB5OiBcImxhdFwiLFxyXG4gICAgICBmaWxsOiBcInJlZFwiLFxyXG4gICAgICBwYWludE9yZGVyOiBcInN0cm9rZVwiLFxyXG4gICAgICByOiAwLjc1XHJcbiAgICB9KSxcclxuICAgIFBsb3QudGV4dChjaXR5LCB7XHJcbiAgICAgIHg6IGQgPT4gZC5sb24gKyAyLFxyXG4gICAgICB5OiBkID0+IGQubGF0ICsgMixcclxuICAgICAgdGV4dDogXCJuYW1lXCIsXHJcbiAgICAgIGZpbGw6IFwiIzFBMjk1NFwiLFxyXG4gICAgICBwYWludE9yZGVyOiBcInN0cm9rZVwiLFxyXG4gICAgICBmb250U2l6ZTogMTAsXHJcbiAgICAgIHRleHRBbmNob3I6IFwic3RhcnRcIlxyXG4gICAgfSlcclxuICBdXHJcbn0pO1xyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJQbG90LnBsb3Qoe1xyXG4gIHByb2plY3Rpb246IHsgdHlwZTogXCJvcnRob2dyYXBoaWNcIiwgcm90YXRlOiBbYW5nbGUyLCAtMTBdIH0sXHJcbiAgY29sb3I6IHtcclxuICAgIHR5cGU6IFwicXVhbnRpemVcIixcclxuICAgIHNjaGVtZTogXCJibHVlc1wiLFxyXG4gICAgbGFiZWw6IFwiUG9wdWxhcml0eSBTY29yZVwiLFxyXG4gICAgbGVnZW5kOiB0cnVlXHJcbiAgfSxcclxuICBtYXJrczogW1xyXG4gICAgUGxvdC5nZW8oY291bnRyaWVzLCB7XHJcbiAgICAgIGZpbGw6IGQgPT4gc2NvcmUuZ2V0KGQuaWQpLFxyXG4gICAgICB0aXA6IHRydWUsXHJcbiAgICAgIGNoYW5uZWxzOiB7XHJcbiAgICAgICAgQ291bnRyeTogZCA9PiBkLnByb3BlcnRpZXMubmFtZSxcclxuICAgICAgICBSYW5rOiBkID0+IHJhbmsuZ2V0KGQuaWQpXHJcbiAgICAgIH1cclxuICAgIH0pLFxyXG4gICAgUGxvdC5zcGhlcmUoKVxyXG4gIF1cclxufSk7XHJcbiJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../..";
+window._ojs.paths.runtimeToRoot = "../../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
