@@ -1,3 +1,4 @@
 [1,"==> quarto preview rcloseread.qmd --to closeread-html --no-watch-inputs --no-browse\n\n"]
 [1,"pandoc \n  to: html\n  output-file: rcloseread.html\n  standalone: true\n  section-divs: true\n  html-math-method: mathjax\n  wrap: none\n  default-image-extension: png\n  css:\n    - _extensions/qmd-lab/closeread/closeread.css\n  \nmetadata\n  document-css: false\n  link-citations: true\n  date-format: long\n  lang: en\n  page-layout: full\n  editor: visual\n  title: R You Curious About R? Here’s Everything You Need to Know!\n  remove-header-space: true\n  cr-style:\n    narrative-background-color-overlay: transparent\n    narrative-background-color-sidebar: transparent\n    section-background-color: transparent\n    narrative-text-color-overlay: black\n  \n"]
-[1,"Output created: rcloseread.html\n\nWatching files for changes\nBrowse at http://localhost:6291/rcloseread.html\n"]
+[1,"Output created: rcloseread.html\n\nWatching files for changes\n"]
+[1,"Browse at http://localhost:7625/rcloseread.html\n"]

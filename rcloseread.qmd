@@ -71,7 +71,7 @@ R has become one of the most widely used programming languages across the globe,
 
 This map shows the R popularity score of  worldwide, which is the scale average of the number of R conference attendees, R Foundation and RUG members, R-bloggers.com visits and CRAN downloads per 1,000 people using data up to 2015. R users are primarily located in countries across **Europe**, **North America**, and **Oceania**. @cr-globe
 
-What many may not know is that R originates from <br> **New Zealand**. [@cr-globe]{pan-to="0%,-130%" scale-by="4.75"}
+What many may not know is that R actually originates from <br> **New Zealand**. [@cr-globe]{pan-to="0%,-130%" scale-by="4.75"}
 
 :::
 

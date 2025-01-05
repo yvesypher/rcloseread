@@ -3,7 +3,7 @@
     "path": "~/rcloseread/_extensions/qmd-lab/closeread/closeread.css",
     "project_path": "_extensions/qmd-lab/closeread/closeread.css",
     "type": "css",
-    "hash": "1138131962",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1735986246942.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "9,1",
+        "cursorPosition": "15,16",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1736074477,
+    "lastKnownWriteTime": 1736084711,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1736074477878,
+    "last_content_update": 1736084711767,
     "read_only": false,
     "read_only_alternatives": []
 }
