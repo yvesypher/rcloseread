@@ -5,7 +5,7 @@ format:
     remove-header-space: true
     cr-style:
       narrative-background-color-overlay: transparent
-      narrative-background-color-sidebar: "#86bff3"
+      narrative-background-color-sidebar: transparent
       section-background-color: transparent
       narrative-text-color-overlay: black
 ---
@@ -69,7 +69,7 @@ Hence, let's explore the journey of R from a niche tool to a global phenomenon. 
 :::{.progress-block}
 R has become one of the most widely used programming languages across the globe, thanks to its power in data analysis, visualization, and statistical computing. The number of R users has grown exponentially, solidifying its position in academia, research, and industry. @cr-globe
 
-This map shows the R popularity score of  worldwide, which is the scale average of the number of R conference attendees, R Foundation and RUG members, R-bloggers.com visits and CRAN downloads per 1,000 people using data up to 2015. R users are primarily located in countries across Europe, Oceania, and North America. @cr-globe
+This map shows the R popularity score of  worldwide, which is the scale average of the number of R conference attendees, R Foundation and RUG members, R-bloggers.com visits and CRAN downloads per 1,000 people using data up to 2015. R users are primarily located in countries across **Europe**, **North America**, and **Oceania**. @cr-globe
 
 What many may not know is that R originates from <br> **New Zealand**. [@cr-globe]{pan-to="0%,-130%" scale-by="4.75"}
 
@@ -87,6 +87,7 @@ Plot.plot({
     legend: true
   },
   marks: [
+    Plot.graticule(),
     Plot.geo(countries, {
       fill: d => score.get(d.id),
       tip: true,
@@ -273,6 +274,6 @@ But R is more than just a language or a tool, it’s a community. R enthusiasts 
 
 This collaborative spirit has fostered a culture of knowledge sharing and mutual support, driving R’s continuous evolution. @cr-rgrp
 
-Are you ready to explore the power and versatility of R? Dive in today and join a community that’s shaping the future of data analysis and visualization. @cr-Rlogo
+R you ready to unlock the full potential of R? Dive in today and become part of a dynamic community that's driving the future of data analysis and visualization. @cr-Rlogo
 
 :::

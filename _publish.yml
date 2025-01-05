@@ -1,0 +1,4 @@
+- source: rcloseread.qmd
+  quarto-pub:
+    - id: b93cea51-2671-4e5a-b033-6ddfb87fccd5
+      url: 'https://yvesypher.quarto.pub/rucurious'
