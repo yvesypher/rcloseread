@@ -1,0 +1,11 @@
+---
+title: "R You Curious About R? Here’s Everything You Need to Know!"
+format: live-html
+engine: knitr
+---
+
+```{webr}
+for (x in 1:5) {
+  print(x ** 2)
+}
+```

@@ -1,6 +1,6 @@
 ---
-title: "R You Curious About R? Here’s Everything You Need to Know!"
-format: 
+title: ""
+format:
   closeread-html:
     remove-header-space: true
     cr-style:
@@ -21,7 +21,6 @@ format:
   }
 </style>
 ```
-
 ```{ojs}
 
 world = FileAttachment("countries-110m.json").json()
@@ -48,31 +47,27 @@ angle2 = angleScale2(
     + crTriggerProgress)
 ```
 
-:::{.cr-section}
-
+::: cr-section
 ::: {focus-on="cr-Rlogo"}
-# ![](img/Rlogo.ico) You Curious About ![](img/Rlogo.ico)? Here’s Everything You <br> Need To Know! 
+# ![](img/Rlogo.ico) You Curious About ![](img/Rlogo.ico)? Here’s Everything You Need To Know!
 :::
 
-If you are seeking a programming language that combines powerful statistical analysis, elegant data visualization, and flexibility, R is a good choice for you. @cr-Rlogo  
+If you are seeking a programming language that combines powerful statistical analysis, elegant data visualization, and flexibility, ![](img/Rlogo_inline.ico) is a good choice for you. @cr-Rlogo
 
-But have you ever wondered how R becomes the go-to tool for data scientists and statisticians worldwide? @cr-Rlogo 
+But have you ever wondered how ![](img/Rlogo_inline.ico) becomes the go-to tool for data scientists and statisticians worldwide? @cr-Rlogo
 
-Hence, let's explore the journey of R from a niche tool to a global phenomenon. Whether you’re a beginner or just curious about its story, this has everything you need to know to get started with R. @cr-Rlogo 
+Hence, let's explore the journey of ![](img/Rlogo_inline.ico) from a niche tool to a global phenomenon. Whether you’re a beginner or just curious about its story, this has everything you need to know to get started with ![](img/Rlogo_inline.ico). @cr-Rlogo
 
-:::{#cr-Rlogo}
-
-![](img/R_logo.png){width=70% fig-align="center"}
-
+::: {#cr-Rlogo}
+![](img/R_logo.png){width="70%" fig-align="center"}
 :::
 
-:::{.progress-block}
-R has become one of the most widely used programming languages across the globe, thanks to its power in data analysis, visualization, and statistical computing. The number of R users has grown exponentially, solidifying its position in academia, research, and industry. @cr-globe
+::: progress-block
+![](img/Rlogo_inline.ico) has become one of the most widely used programming languages across the globe, thanks to its power in data analysis, visualization, and statistical computing. The number of ![](img/Rlogo_inline.ico) users has grown exponentially, solidifying its position in academia, research, and industry. @cr-globe
 
-This map shows the R popularity score of  worldwide, which is the scale average of the number of R conference attendees, R Foundation and RUG members, R-bloggers.com visits and CRAN downloads per 1,000 people using data up to 2015. R users are primarily located in countries across **Europe**, **North America**, and **Oceania**. @cr-globe
+This map shows the popularity score of ![](img/Rlogo_inline.ico) worldwide, which is the scale average of the number of the **R Foundation** members and the **R User Groups** members, the **R conference** attendees, the **R-bloggers.com** visits and the **CRAN** downloads per 1,000 people using data up to 2015. ![](img/Rlogo_inline.ico) users are primarily located in countries across **Europe**, **North America**, and **Oceania**. @cr-globe
 
-What many may not know is that R actually originates from <br> **New Zealand**. [@cr-globe]{pan-to="0%,-130%" scale-by="4.75"}
-
+What many may not know is that ![](img/Rlogo_inline.ico) actually originates from **New Zealand**. [@cr-globe]{pan-to="0%,-130%" scale-by="4.75"}
 :::
 
 ::: {#cr-globe}
@@ -87,7 +82,6 @@ Plot.plot({
     legend: true
   },
   marks: [
-    Plot.graticule(),
     Plot.geo(countries, {
       fill: d => score.get(d.id),
       tip: true,
@@ -119,40 +113,14 @@ Plot.plot({
 
 :::
 
-::: {#cr-globe}
 
-```{ojs}
-Plot.plot({
-  projection: { type: "orthographic", rotate: [angle2, -10] },
-  color: {
-    type: "quantize",
-    scheme: "blues",
-    label: "Popularity Score",
-    legend: true
-  },
-  marks: [
-    Plot.geo(countries, {
-      fill: d => score.get(d.id),
-      tip: true,
-      channels: {
-        Country: d => d.properties.name,
-        Rank: d => rank.get(d.id)
-      }
-    }),
-    Plot.sphere()
-  ]
-});
-```
+![](img/Rlogo_inline.ico) was created by two professors, **Ross Ihaka** and **Robert Gentleman**, from the University of Auckland in the early 1990s. @cr-img
 
-:::
+Inspired by **S** programming language, this pioneering duo developed a language to teach introductory statistics at the University of Auckland and named it after the **initial** of their first names. [@cr-img]{highlight="cr-initial,cr-initial1"}
 
-R was created by two professors, **Ross Ihaka** and **Robert Gentleman**, from the University of Auckland in the early 1990s. @cr-img
+Their vision of a free and open-source platform for statistical computing has since empowered countless data enthusiasts and professionals worldwide, creating a vibrant community that continues to innovate and expand the boundaries of ![](img/Rlogo_inline.ico). @cr-img
 
-Inspired by S programming language, this pioneering duo developed a language to teach introductory statistics at the University of Auckland and named it after the **initial** of their first names. [@cr-img]{highlight="cr-initial,cr-initial1"}
-
-Their vision of a free and open-source platform for statistical computing has since empowered countless data enthusiasts and professionals worldwide, creating a vibrant community that continues to innovate and expand the boundaries of R. @cr-img
-
-:::{#cr-img}
+::: {#cr-img}
 
 ::: {.columns}
 
@@ -173,21 +141,19 @@ Their vision of a free and open-source platform for statistical computing has si
 
 :::
 
-
-
 :::
 
-One of the key drivers behind this innovation is R's package ecosystem. But what exactly is an R package? Think of it as an extension or add-on for R, created by the community to solve specific problems or enhance functionality. Each package bundles together reusable functions, data, and documentation, making it easier for users to tackle tasks without reinventing the wheel. @cr-imgpkg
+One of the key drivers behind this innovation is the package ecosystem of ![](img/Rlogo_inline.ico). But what exactly is an R package? Think of it as an extension or add-on for ![](img/Rlogo_inline.ico), created by the community to solve specific problems or enhance functionality. Each package bundles together reusable functions, data, and documentation, making it easier for users to tackle tasks without reinventing the wheel. @cr-imgpkg
 
-With over 18,000 packages available on **CRAN** (the Comprehensive R Archive Network), R’s functionality is virtually limitless. Let’s explore a few game-changing packages. @cr-imgpkg
+With over 20,000 packages available on [**CRAN**](https://cran.r-project.org/) (Comprehensive R Archive Network), the functionality of ![](img/Rlogo_inline.ico) is virtually limitless. Let’s explore some game-changing and interesting ![](img/Rlogo_inline.ico) packages. @cr-imgpkg
 
-`tidyverse` is one of the most popular R packages, which is a collection of R packages designed for data science, including: `ggplot2`, `readr`, `tidyr`, `purrr`, `dplyr`, `stringr`, `tibble`. All packages follow a consistent design philosophy, grammar, and data structures. @cr-tdv
+`tidyverse` is one of the most popular ![](img/Rlogo_inline.ico) packages, which is a collection of ![](img/Rlogo_inline.ico) packages designed for data science, including: `ggplot2`, `readr`, `tidyr`, `purrr`, `dplyr`, `stringr`, `tibble`. All packages follow a consistent design philosophy, grammar, and data structures. @cr-tdv
 
-`tibble` is a modern take on R’s classic data frame. Tibbles keep what works and fix what doesn’t. For example, tibbles don’t automatically change variable names or data types, and they flag potential issues early. This helps you write cleaner, more reliable code. Additionally, tibbles come with an improved print function, making it easier to work with large datasets or complex objects. @cr-tb
+`tibble` is a modern take on classic data frame in ![](img/Rlogo_inline.ico). Tibbles keep what works and fix what doesn’t. For example, tibbles don’t automatically change variable names or data types, and they flag potential issues early. This helps you write cleaner, more reliable code. Additionally, tibbles come with an improved `print()` function, making it easier to work with large datasets or complex objects. @cr-tb
 
-`ggplot2` is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details. @cr-gg
+`ggplot2` is a system for declaratively creating graphics, based on [The Grammar of Graphics](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448). You provide the data, tell `ggplot2` how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details. @cr-gg
 
-`readr` is designed to make importing data into R fast and hassle-free. It works great with delimited files such as comma-separated values (CSV) and tab-separated values (TSV) and provides helpful feedback if something goes wrong. Whether you’re working with messy data or clean tables, readr simplifies the process. @cr-rr
+`readr` is designed to make importing data into ![](img/Rlogo_inline.ico) fast and hassle-free. It works great with delimited files such as comma-separated values (CSV) and tab-separated values (TSV) and provides helpful feedback if something goes wrong. Whether you’re working with messy data or clean tables, readr simplifies the process. @cr-rr
 
 `tidyr` package helps organize data into a “tidy” format, where: <br>
 - Each variable is a column; each column is a variable. <br>
@@ -195,85 +161,71 @@ With over 18,000 packages available on **CRAN** (the Comprehensive R Archive Net
 - Each value is a cell; each cell is a single value. <br>
 Tidy data makes the analysis easier, more intuitive, and compatible with the rest of the `tidyverse` tools. @cr-tr
 
-`purrr` expands R’s functional programming (FP) toolkit by offering a complete and consistent set of tools for working with functions and vectors. It’s great for working with functions and vectors. One of its standout features is the `map()` family of functions, which can replace repetitive for-loops with simpler, more readable code. @cr-pr
+`purrr` expands the functional programming (FP) toolkit in ![](img/Rlogo_inline.ico) by offering a complete and consistent set of tools for working with functions and vectors. It’s great for working with functions and vectors. One of its standout features is the `map()` family of functions, which can replace repetitive loops with simpler and more comprehensive code. @cr-pr
 
-`forcats` is a powerful tool for managing and manipulating factors, R's way of handling categorical data. It simplifies tasks like reordering, renaming, and reorganizing factor levels, making it easier to analyze or present categorical variables effectively. Whether it’s cleaning messy data or fine-tuning visualizations, `forcats` simplifies the process of handling categories with ease and precision. @cr-fs
+`forcats` is a powerful tool for managing and manipulating factors, which is the way of handling categorical data in ![](img/Rlogo_inline.ico). It simplifies tasks like reordering, renaming, and reorganizing factor levels, making it easier to analyze or present categorical variables effectively. Whether it’s cleaning messy data or fine-tuning visualizations, `forcats` simplifies the process of handling categories with ease and precision. @cr-fs
 
 `dplyr` is a toolkit for data manipulation, providing a consistent set of functions that help handle common data wrangling tasks. Its clean syntax ensures the readability and efficiency of the codes. @cr-dr
 
-`stringr` streamlines working with text data in R, providing a consistent set of functions for tasks such as searching, replacing, and splitting strings. When dealing with messy text data, stringr efficiently reduces effort and saves time. @cr-sr
-
+`stringr` streamlines working with text data in ![](img/Rlogo_inline.ico), providing a consistent set of functions for tasks such as searching, replacing, and splitting strings. When dealing with messy text data, stringr efficiently reduces effort and saves time. @cr-sr
 
 :::{#cr-imgpkg}
 ![](img/rpackage.png)
-
 :::
 
 :::{#cr-tdv}
 ![](img/tidyverse.png)
-
 :::
 
 :::{#cr-gg}
 ![](img/ggplot2.png)
-
 :::
 
 :::{#cr-rr}
 ![](img/readr.png)
-
 :::
 
 :::{#cr-tr}
 ![](img/tidyr.png)
-
 :::
 
 :::{#cr-pr}
 ![](img/purrr.png)
-
 :::
 
 :::{#cr-dr}
 ![](img/dplyr.png)
-
 :::
 
 :::{#cr-sr}
 ![](img/stringr.png)
-
 :::
 
 :::{#cr-tb}
 ![](img/tibble.png)
-
 :::
 
 :::{#cr-fs}
 ![](img/forcats.png)
-
 :::
 
-As an interpreted language, R operates through a native command-line interface (CLI), offering users direct access to its powerful capabilities for data analysis and statistical computing. While the CLI is effective for experienced users, it can be challenging for beginners or those working on more complex projects. This is where RStudio, an integrated development environment (IDE) for R, comes in. RStudio enhances the R experience by providing a user-friendly interface with a suite of tools that streamline the workflow for data analysis. @cr-rstudio
+As an interpreted language, ![](img/Rlogo_inline.ico) operates through a native command-line interface (CLI), offering users direct access to its powerful capabilities for data analysis and statistical computing. While the CLI is effective for experienced users, it can be challenging for beginners or those working on more complex projects. This is where **RStudio**, an integrated development environment (IDE) for ![](img/Rlogo_inline.ico), comes in. **RStudio** enhances the experience of using ![](img/Rlogo_inline.ico) by providing a user-friendly interface with a suite of tools that streamline the workflow for data analysis. @cr-rstudio
 
-One of its standout features is its robust support for R Markdown, which allows users to create dynamic, reproducible analyses and share results in a variety of formats, such as HTML, PDF, and Word. RStudio’s integration of these tools enhance the ability to organize, visualize, and analyse data, which promotes reproducibility and transparency in research and professional data work. @cr-wf
+One of **RStudio**'s standout features is its robust support for **RMarkdown**, which allows users to create dynamic, reproducible analyses and share results in a variety of formats, such as HTML, PDF, and Word. **RStudio**’s integration of these tools has enhanced the ability to organize, visualize, and analyse data, which promotes the efficiency, reproducibility and transparency in research and professional work. @cr-wf
 
 :::{#cr-rstudio}
-![](img/rstudio.png){width=70% fig-align="center"}
+![](img/rstudio.png){width="80%" fig-align="center"}
 :::
 
 :::{#cr-wf}
-![](img/workflow.png){width=90% fig-align="center"}
+![](img/workflow.png){width="100%" fig-align="center"}
 :::
 
-But R is more than just a language or a tool, it’s a community. R enthusiasts connect through global groups, conferences, and meetups such as **R-Ladies**, **posit::conf**, and **useR!**. @cr-rgrp
+But ![](img/Rlogo_inline.ico) is more than just a language or a tool, it is a community. ![](img/Rlogo_inline.ico) enthusiasts connect through global groups, conferences, and meetings such as **posit::conf**, **R-Ladies**, and **useR!**. This collaborative and innovative spirit has encouraged a culture of knowledge sharing and mutual support, driving the continuous evolution of ![](img/Rlogo_inline.ico). @cr-rgrp
 
 :::{#cr-rgrp}
-![](img/rgrp.png){width=90% fig-align="center"}
+![](img/rgrp.png){width="100%" fig-align="center"}
 :::
 
-This collaborative spirit has fostered a culture of knowledge sharing and mutual support, driving R’s continuous evolution. @cr-rgrp
-
-R you ready to unlock the full potential of R? Dive in today and become part of a dynamic community that's driving the future of data analysis and visualization. @cr-Rlogo
-
+So ![](img/Rlogo_inline.ico) you ready to unlock the full potential of ![](img/Rlogo_inline.ico)? Let's install [![](img/Rlogo_inline.ico)](https://cran.r-project.org/) today and become part of a dynamic community that's driving the future of data science! @cr-Rlogo
 :::

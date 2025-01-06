@@ -7,8 +7,14 @@
 }
 */
 
+h1{
+    font-weight: 700;
+    font-size: 3rem;
+  }
+
 p{
   text-align: justify;
+  font-size: 1.25em;
 }
 
 .line-block {
@@ -20,7 +26,7 @@ p{
   text-align: center;
   position: absolute;
   bottom: 1.5px;
-  left: 80%; /* Center horizontally */
+  left: 50%; /* Center horizontally */
   transform: translateX(-50%); 
   margin-left: 0; 
   margin-right: 0;
