@@ -3,7 +3,7 @@
     "path": "~/rcloseread/README.md",
     "project_path": "README.md",
     "type": "markdown",
-    "hash": "192246210",
+    "hash": "2689399086",
     "contents": "",
     "dirty": false,
     "created": 1736204405982.0,
@@ -17,15 +17,15 @@
         "docOutlineVisible": "0",
         "rmdVisualModeLocation": "2:0",
         "rmdVisualCollapsedChunks": "",
-        "cursorPosition": "2,4",
+        "cursorPosition": "1,506",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1736205421,
+    "lastKnownWriteTime": 1736205564,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1736205421326,
+    "last_content_update": 1736205564131,
     "read_only": false,
     "read_only_alternatives": []
 }
